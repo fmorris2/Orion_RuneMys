@@ -1,7 +1,7 @@
 package org.missions.tasks;
 
 import org.missions.OrionRuneMys;
-import org.missions.data.enums.QuestNPC;
+import org.missions.data.enums.RM_QuestNPC;
 import org.osbot.rs07.api.model.NPC;
 import viking.api.Timing;
 import viking.framework.task.Task;
@@ -24,15 +24,15 @@ public class StartQuest extends Task<OrionRuneMys> {
 
     @Override
     public void execute() {
-        duke_horacio = npcs.closest(QuestNPC.DUKE_HORACIO.getNPCArea().setPlane(1), QuestNPC.DUKE_HORACIO.getNPCName());
+        duke_horacio = npcs.closest(RM_QuestNPC.DUKE_HORACIO.getNPCArea().setPlane(1), RM_QuestNPC.DUKE_HORACIO.getNPCName());
         if (duke_horacio != null && map.canReach(duke_horacio)) {
-            iFact.dialogue("Talk-to", QuestNPC.DUKE_HORACIO.getNPCName(), 20, 1).execute();
+            iFact.dialogue("Talk-to", RM_QuestNPC.DUKE_HORACIO.getNPCName(), 20, 1).execute();
         } else {
-            if (walkUtils.walkToArea(QuestNPC.DUKE_HORACIO.getNPCArea().setPlane(1), () -> {
-                duke_horacio = npcs.closest(QuestNPC.DUKE_HORACIO.getNPCArea().setPlane(1), QuestNPC.DUKE_HORACIO.getNPCName());
+            if (walkUtils.walkToArea(RM_QuestNPC.DUKE_HORACIO.getNPCArea().setPlane(1), () -> {
+                duke_horacio = npcs.closest(RM_QuestNPC.DUKE_HORACIO.getNPCArea().setPlane(1), RM_QuestNPC.DUKE_HORACIO.getNPCName());
                 return duke_horacio != null && duke_horacio.isVisible() && map.canReach(duke_horacio);
             })) {
-                Timing.waitCondition(() -> npcs.closest(QuestNPC.DUKE_HORACIO.getNPCArea().setPlane(1), QuestNPC.DUKE_HORACIO.getNPCName()) != null, 150, random(2000, 2500));
+                Timing.waitCondition(() -> npcs.closest(RM_QuestNPC.DUKE_HORACIO.getNPCArea().setPlane(1), RM_QuestNPC.DUKE_HORACIO.getNPCName()) != null, 150, random(2000, 2500));
             }
         }
     }

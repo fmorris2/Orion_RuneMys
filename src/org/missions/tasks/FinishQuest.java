@@ -1,7 +1,7 @@
 package org.missions.tasks;
 
 import org.missions.OrionRuneMys;
-import org.missions.data.enums.QuestNPC;
+import org.missions.data.enums.RM_QuestNPC;
 import org.osbot.rs07.api.model.NPC;
 import viking.api.Timing;
 import viking.framework.task.Task;
@@ -24,15 +24,15 @@ public class FinishQuest extends Task<OrionRuneMys> {
 
     @Override
     public void execute() {
-        sedridor = npcs.closest(QuestNPC.SEDRIDOR.getNPCArea(), QuestNPC.SEDRIDOR.getNPCName());
+        sedridor = npcs.closest(RM_QuestNPC.SEDRIDOR.getNPCArea(), RM_QuestNPC.SEDRIDOR.getNPCName());
         if (sedridor != null && map.canReach(sedridor)) {
-            iFact.dialogue("Talk-to", QuestNPC.SEDRIDOR.getNPCName(), 20).execute();
+            iFact.dialogue("Talk-to", RM_QuestNPC.SEDRIDOR.getNPCName(), 20).execute();
         } else {
-            if (walkUtils.walkToArea(QuestNPC.SEDRIDOR.getNPCArea(), () -> {
-                sedridor = npcs.closest(QuestNPC.SEDRIDOR.getNPCArea(), QuestNPC.SEDRIDOR.getNPCName());
+            if (walkUtils.walkToArea(RM_QuestNPC.SEDRIDOR.getNPCArea(), () -> {
+                sedridor = npcs.closest(RM_QuestNPC.SEDRIDOR.getNPCArea(), RM_QuestNPC.SEDRIDOR.getNPCName());
                 return sedridor != null && sedridor.isVisible() && map.canReach(sedridor);
             })) {
-                Timing.waitCondition(() -> npcs.closest(QuestNPC.SEDRIDOR.getNPCArea(), QuestNPC.SEDRIDOR.getNPCName()) != null, 150, random(2000, 2500));
+                Timing.waitCondition(() -> npcs.closest(RM_QuestNPC.SEDRIDOR.getNPCArea(), RM_QuestNPC.SEDRIDOR.getNPCName()) != null, 150, random(2000, 2500));
             }
         }
     }

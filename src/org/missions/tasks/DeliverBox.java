@@ -1,7 +1,7 @@
 package org.missions.tasks;
 
 import org.missions.OrionRuneMys;
-import org.missions.data.enums.QuestNPC;
+import org.missions.data.enums.RM_QuestNPC;
 import org.osbot.rs07.api.model.NPC;
 import viking.api.Timing;
 import viking.framework.task.Task;
@@ -24,15 +24,15 @@ public class DeliverBox extends Task<OrionRuneMys> {
 
     @Override
     public void execute() {
-        aubury = npcs.closest(QuestNPC.AUBURY.getNPCArea(), QuestNPC.AUBURY.getNPCName());
+        aubury = npcs.closest(RM_QuestNPC.AUBURY.getNPCArea(), RM_QuestNPC.AUBURY.getNPCName());
         if (aubury != null && map.canReach(aubury)) {
-            iFact.dialogue("Talk-to", QuestNPC.AUBURY.getNPCName(), 20, 3).execute();
+            iFact.dialogue("Talk-to", RM_QuestNPC.AUBURY.getNPCName(), 20, 3).execute();
         } else {
-            if (walkUtils.walkToArea(QuestNPC.AUBURY.getNPCArea(), () -> {
-                aubury = npcs.closest(QuestNPC.AUBURY.getNPCArea(), QuestNPC.AUBURY.getNPCName());
+            if (walkUtils.walkToArea(RM_QuestNPC.AUBURY.getNPCArea(), () -> {
+                aubury = npcs.closest(RM_QuestNPC.AUBURY.getNPCArea(), RM_QuestNPC.AUBURY.getNPCName());
                 return aubury != null && aubury.isVisible() && map.canReach(aubury);
             })) {
-                Timing.waitCondition(() -> npcs.closest(QuestNPC.AUBURY.getNPCArea(), QuestNPC.AUBURY.getNPCName()) != null, 150, random(2000, 2500));
+                Timing.waitCondition(() -> npcs.closest(RM_QuestNPC.AUBURY.getNPCArea(), RM_QuestNPC.AUBURY.getNPCName()) != null, 150, random(2000, 2500));
             }
         }
     }

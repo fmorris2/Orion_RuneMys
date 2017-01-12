@@ -6,7 +6,7 @@ import org.osbot.rs07.api.map.Position;
 /**
  * Created by Sphiinx on 1/11/2017.
  */
-public enum QuestNPC {
+public enum RM_QuestNPC {
 
     DUKE_HORACIO("Duke Horacio", new Area(new Position[]{
             new Position(3204, 3226, 1),
@@ -30,7 +30,7 @@ public enum QuestNPC {
     private final String NPC_NAME;
     private final Area NPC_AREA;
 
-    QuestNPC(String npc_name, Area npc_area) {
+    RM_QuestNPC(String npc_name, Area npc_area) {
         this.NPC_NAME = npc_name;
         this.NPC_AREA = npc_area;
     }
