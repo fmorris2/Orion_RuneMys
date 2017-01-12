@@ -9,11 +9,11 @@ import viking.framework.task.Task;
 /**
  * Created by Sphiinx on 1/11/2017.
  */
-public class StartQuest extends Task<OrionRuneMys> {
+public class RM_StartQuest extends Task<OrionRuneMys> {
 
     private NPC duke_horacio;
 
-    public StartQuest(OrionRuneMys mission) {
+    public RM_StartQuest(OrionRuneMys mission) {
         super(mission);
     }
 

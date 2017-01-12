@@ -9,11 +9,11 @@ import viking.framework.task.Task;
 /**
  * Created by Sphiinx on 1/11/2017.
  */
-public class FinishQuest extends Task<OrionRuneMys> {
+public class RM_FinishQuest extends Task<OrionRuneMys> {
 
     private NPC sedridor;
 
-    public FinishQuest(OrionRuneMys mission) {
+    public RM_FinishQuest(OrionRuneMys mission) {
         super(mission);
     }
 
