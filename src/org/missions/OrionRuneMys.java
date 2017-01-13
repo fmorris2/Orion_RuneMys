@@ -1,6 +1,9 @@
 package org.missions;
 
 import org.missions.tasks.*;
+import org.missions.tasks.recovery_system.RecoverBox;
+import org.missions.tasks.recovery_system.RecoverNote;
+import org.missions.tasks.recovery_system.RecoverTalisman;
 import viking.framework.goal.GoalList;
 import viking.framework.goal.impl.InfiniteGoal;
 import viking.framework.mission.Mission;
@@ -53,7 +56,7 @@ public class OrionRuneMys extends Mission {
 
     @Override
     public void onMissionStart() {
-        TASK_MANAGER.addTask(new RM_DepositItems(this), new RM_StartQuest(this), new DeliverTalisman(this), new DeliverBox(this), new RM_FinishQuest(this));
+        TASK_MANAGER.addTask(new RM_DepositItems(this), new RecoverTalisman(this), new RM_StartQuest(this), new DeliverTalisman(this), new RecoverBox(this), new DeliverBox(this), new RecoverNote(this), new RM_FinishQuest(this));
     }
 
     @Override

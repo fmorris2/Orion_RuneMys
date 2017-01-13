@@ -15,7 +15,10 @@ public class RM_DepositItems extends Task<OrionRuneMys> {
     }
 
     public boolean validate() {
-        return inventory.getItems().length > 0 && !RuneMys_Vars.get().has_emptied_inventory;
+        if (inventory.isEmpty())
+            RuneMys_Vars.get().has_emptied_inventory = true;
+
+        return !inventory.isEmpty() && !RuneMys_Vars.get().has_emptied_inventory;
     }
 
     public void execute() {

@@ -2,6 +2,7 @@ package org.missions.tasks;
 
 import org.missions.OrionRuneMys;
 import org.missions.data.enums.RM_QuestNPC;
+import org.missions.data.enums.RM_QuestObject;
 import org.osbot.rs07.api.model.NPC;
 import viking.api.Timing;
 import viking.framework.task.Task;
@@ -19,14 +20,14 @@ public class DeliverTalisman extends Task<OrionRuneMys> {
 
     @Override
     public boolean validate() {
-        return configs.get(63) == 1 || configs.get(63) == 2;
+        return (configs.get(63) == 1 && inventory.contains(RM_QuestObject.AIR_TALISMAN.getItemID()) || configs.get(63) == 2);
     }
 
     @Override
     public void execute() {
         sedridor = npcs.closest(RM_QuestNPC.SEDRIDOR.getNPCArea(), RM_QuestNPC.SEDRIDOR.getNPCName());
         if (sedridor != null && map.canReach(sedridor)) {
-            iFact.dialogue("Talk-to", RM_QuestNPC.SEDRIDOR.getNPCName(), 20, 3, 1, 1).execute();
+            iFact.dialogue("Talk-to", RM_QuestNPC.SEDRIDOR.getNPCName(), 20, 3, 1).execute();
         } else {
             if (walkUtils.walkToArea(RM_QuestNPC.SEDRIDOR.getNPCArea(), () -> {
                 sedridor = npcs.closest(RM_QuestNPC.SEDRIDOR.getNPCArea(), RM_QuestNPC.SEDRIDOR.getNPCName());
