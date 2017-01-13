@@ -8,9 +8,9 @@ import viking.framework.task.Task;
 /**
  * Created by Sphiinx on 1/12/2017.
  */
-public class DepositItems extends Task<OrionRuneMys> {
+public class RM_DepositItems extends Task<OrionRuneMys> {
 
-    public DepositItems(OrionRuneMys mission) {
+    public RM_DepositItems(OrionRuneMys mission) {
         super(mission);
     }
 
