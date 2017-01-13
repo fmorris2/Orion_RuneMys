@@ -15,5 +15,7 @@ public class RuneMys_Vars {
         vars = null;
     }
 
+    public boolean has_emptied_inventory;
+
 }
 
