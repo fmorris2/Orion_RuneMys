@@ -16,6 +16,8 @@ public class RuneMys_Vars {
     }
 
     public boolean has_emptied_inventory;
+    public boolean has_checked_bank_for_box;
+    public boolean has_checked_bank_for_note;
 
 }
 
