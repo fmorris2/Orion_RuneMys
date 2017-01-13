@@ -1,9 +1,6 @@
 package org.missions;
 
-import org.missions.tasks.DeliverBox;
-import org.missions.tasks.DeliverTalisman;
-import org.missions.tasks.RM_FinishQuest;
-import org.missions.tasks.RM_StartQuest;
+import org.missions.tasks.*;
 import viking.framework.goal.GoalList;
 import viking.framework.goal.impl.InfiniteGoal;
 import viking.framework.mission.Mission;
@@ -56,7 +53,7 @@ public class OrionRuneMys extends Mission {
 
     @Override
     public void onMissionStart() {
-        TASK_MANAGER.addTask(new RM_StartQuest(this), new DeliverTalisman(this), new DeliverBox(this), new RM_FinishQuest(this));
+        TASK_MANAGER.addTask(new RM_DepositItems(this), new RM_StartQuest(this), new DeliverTalisman(this), new DeliverBox(this), new RM_FinishQuest(this));
     }
 
     @Override
