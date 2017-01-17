@@ -3,8 +3,8 @@ package org.missions.tasks.recovery_system;
 import org.missions.OrionRuneMys;
 import org.missions.data.enums.RM_QuestNPC;
 import org.missions.data.enums.RM_QuestObject;
-import org.osbot.rs07.api.model.Item;
 import org.osbot.rs07.api.model.NPC;
+
 import viking.api.Timing;
 import viking.framework.task.Task;
 
@@ -26,17 +26,34 @@ public class RecoverTalisman extends Task<OrionRuneMys> {
 
     @Override
     public void execute() {
-        duke_horacio = npcs.closest(RM_QuestNPC.DUKE_HORACIO.getNPCArea().setPlane(1), RM_QuestNPC.DUKE_HORACIO.getNPCName());
-        if (duke_horacio != null && map.canReach(duke_horacio)) {
-            iFact.dialogue("Talk-to", RM_QuestNPC.DUKE_HORACIO.getNPCName(), 20, 1).execute();
-        } else {
-            if (walkUtils.walkToArea(RM_QuestNPC.DUKE_HORACIO.getNPCArea().setPlane(1), () -> {
-                duke_horacio = npcs.closest(RM_QuestNPC.DUKE_HORACIO.getNPCArea().setPlane(1), RM_QuestNPC.DUKE_HORACIO.getNPCName());
-                return duke_horacio != null && duke_horacio.isVisible() && map.canReach(duke_horacio);
-            })) {
-                Timing.waitCondition(() -> npcs.closest(RM_QuestNPC.DUKE_HORACIO.getNPCArea().setPlane(1), RM_QuestNPC.DUKE_HORACIO.getNPCName()) != null, 150, random(2000, 2500));
-            }
-        }
+    	if(script.BANK_CACHE.get().isEmpty() || script.BANK_CACHE.get().containsKey(RM_QuestObject.AIR_TALISMAN.getItemID()))
+    		grabFromBank();
+		else
+		{
+	        duke_horacio = npcs.closest(RM_QuestNPC.DUKE_HORACIO.getNPCArea().setPlane(1), RM_QuestNPC.DUKE_HORACIO.getNPCName());
+	        if (duke_horacio != null && map.canReach(duke_horacio)) {
+	            iFact.dialogue("Talk-to", RM_QuestNPC.DUKE_HORACIO.getNPCName(), 20, 1).execute();
+	        } else {
+	            if (walkUtils.walkToArea(RM_QuestNPC.DUKE_HORACIO.getNPCArea().setPlane(1), () -> {
+	                duke_horacio = npcs.closest(RM_QuestNPC.DUKE_HORACIO.getNPCArea().setPlane(1), RM_QuestNPC.DUKE_HORACIO.getNPCName());
+	                return duke_horacio != null && duke_horacio.isVisible() && map.canReach(duke_horacio);
+	            })) {
+	                Timing.waitCondition(() -> npcs.closest(RM_QuestNPC.DUKE_HORACIO.getNPCArea().setPlane(1), RM_QuestNPC.DUKE_HORACIO.getNPCName()) != null, 150, random(2000, 2500));
+	            }
+	        }
+		}
+    }
+    
+    private void grabFromBank()
+    {
+    	if(bankUtils.isInBank())
+    	{
+    		if(bank.isOpen() || bankUtils.open())
+    			bank.withdraw(RM_QuestObject.AIR_TALISMAN.getItemID(), 1);
+    	}
+    	else
+    		getWalking().webWalk(bankUtils.getAllBanks(false, false));
+    		
     }
 
     @Override
