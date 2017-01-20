@@ -20,7 +20,7 @@ public class OrionRuneMys extends Mission {
 
     @Override
     public boolean canEnd() {
-        return configs.get(63) == 6;
+        return questing.closeQuestCompletion() && configs.get(63) == 6;
     }
 
     @Override
