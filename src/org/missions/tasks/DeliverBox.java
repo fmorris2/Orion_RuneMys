@@ -31,7 +31,7 @@ public class DeliverBox extends Task<OrionRuneMys> {
         } else {
             if (walkUtils.walkToArea(RM_QuestNPC.AUBURY.getNPCArea(), () -> {
                 aubury = npcs.closest(RM_QuestNPC.AUBURY.getNPCArea(), RM_QuestNPC.AUBURY.getNPCName());
-                return aubury != null && aubury.isVisible() && map.canReach(aubury);
+                return aubury != null && map.canReach(aubury);
             })) {
                 Timing.waitCondition(() -> npcs.closest(RM_QuestNPC.AUBURY.getNPCArea(), RM_QuestNPC.AUBURY.getNPCName()) != null, 150, random(2000, 2500));
             }

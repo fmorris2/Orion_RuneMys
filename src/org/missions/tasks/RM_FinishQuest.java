@@ -31,7 +31,7 @@ public class RM_FinishQuest extends Task<OrionRuneMys> {
         } else {
             if (walkUtils.walkToArea(RM_QuestNPC.SEDRIDOR.getNPCArea(), () -> {
                 sedridor = npcs.closest(RM_QuestNPC.SEDRIDOR.getNPCArea(), RM_QuestNPC.SEDRIDOR.getNPCName());
-                return sedridor != null && sedridor.isVisible() && map.canReach(sedridor);
+                return sedridor != null && map.canReach(sedridor);
             })) {
                 Timing.waitCondition(() -> npcs.closest(RM_QuestNPC.SEDRIDOR.getNPCArea(), RM_QuestNPC.SEDRIDOR.getNPCName()) != null, 150, random(2000, 2500));
             }

@@ -36,7 +36,7 @@ public class RecoverTalisman extends Task<OrionRuneMys> {
 	        } else {
 	            if (walkUtils.walkToArea(RM_QuestNPC.DUKE_HORACIO.getNPCArea().setPlane(1), () -> {
 	                duke_horacio = npcs.closest(RM_QuestNPC.DUKE_HORACIO.getNPCArea().setPlane(1), RM_QuestNPC.DUKE_HORACIO.getNPCName());
-	                return duke_horacio != null && duke_horacio.isVisible() && map.canReach(duke_horacio);
+	                return duke_horacio != null && map.canReach(duke_horacio);
 	            })) {
 	                Timing.waitCondition(() -> npcs.closest(RM_QuestNPC.DUKE_HORACIO.getNPCArea().setPlane(1), RM_QuestNPC.DUKE_HORACIO.getNPCName()) != null, 150, random(2000, 2500));
 	            }
