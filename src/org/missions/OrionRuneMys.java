@@ -25,7 +25,7 @@ public class OrionRuneMys extends Mission {
 
     @Override
     public String getMissionName() {
-        return null;
+        return "Orion Rune Mysteries";
     }
 
     @Override
